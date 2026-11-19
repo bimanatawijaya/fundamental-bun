@@ -1,0 +1,10 @@
+// use prisma-8
+
+model Contact {
+    id    Int              @id @default(autoincrement())
+    name  sql.String(100)
+    phone sql.String(28)?
+    email sql.String(100)?
+
+    @@map("contacts")
+}

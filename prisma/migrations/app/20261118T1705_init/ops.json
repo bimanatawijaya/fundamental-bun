@@ -1,0 +1,48 @@
+[
+  {
+    "id": "table.contacts",
+    "label": "Create table contacts",
+    "summary": "Creates table contacts with its columns, primary key and unique constraints",
+    "operationClass": "additive",
+    "target": {
+      "id": "mysql",
+      "details": {
+        "objectType": "table",
+        "name": "contacts"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"contacts\" does not exist",
+        "sql": "SELECT (SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?) = 0 AS result",
+        "params": [
+          "contacts"
+        ],
+        "expectation": {
+          "expects": "absent",
+          "object": "table \"contacts\""
+        }
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"contacts\"",
+        "sql": "CREATE TABLE `contacts` (\n  `email` varchar(100),\n  `id` int NOT NULL AUTO_INCREMENT,\n  `name` varchar(100) NOT NULL,\n  `phone` varchar(28),\n  PRIMARY KEY (`id`)\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"contacts\" exists",
+        "sql": "SELECT (SELECT COUNT(*) FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?) > 0 AS result",
+        "params": [
+          "contacts"
+        ],
+        "expectation": {
+          "expects": "present",
+          "object": "table \"contacts\""
+        }
+      }
+    ]
+  }
+]

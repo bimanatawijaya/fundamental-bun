@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(bunx prisma --version)",
+      "Shell(cat:*)",
+      "Shell(bunx prisma orm init --target mysql --authoring psl --skip-install --no-interactive 2 >& 1)",
+      "Shell(bunx prisma contract emit 2 >& 1)",
+      "Shell(mkdir:*)",
+      "Shell(npm:*)",
+      "Shell(tar:*)",
+      "Shell(for:*)",
+      "Shell(do:*)",
+      "Shell(grep:*)",
+      "Shell(done:*)",
+      "Shell(cd /home/bima/Documents/pribadi/tech_learning/typescript/belajar-bun-fundamental && F=$(ls node_modules/.bun/@prisma+orm-target-mysql@8.0.0-rc.24*/node_modules/@prisma/orm-target-mysql/dist/mysql-database-*.mjs | head -1); echo \"$F\"; grep -n \"VarChar\\|varchar\\|String\\|createNamespace\" \"$F\" | head -40)",
+      "Shell(cd:*)",
+      "Shell(bunx prisma db migrate --advance-ref db 2 >& 1)",
+      "Shell(bunx prisma migration status 2 >& 1)",
+      "Shell(mysql:*)",
+      "Shell(bunx prisma migrate dev 2 >& 1)",
+      "Shell(bunx prisma migration plan --help 2 >& 1)",
+      "Shell(bunx prisma db migrate --help 2 >& 1)",
+      "Shell(bunx prisma contract emit --help 2 >& 1)",
+      "Shell(ls node_modules/@prisma/ 2>/dev/null; echo \"--- exports\"; bun -e 'const p=require(\"./node_modules/@prisma/orm-mysql/package.json\"); console.log(JSON.stringify(p.exports,null,2))' 2>&1 | head -40)",
+      "Shell(bun:*)",
+      "Shell(sed:*)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
